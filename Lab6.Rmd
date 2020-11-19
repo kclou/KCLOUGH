@@ -1,0 +1,193 @@
+---
+title: "Clough_Lab6"
+author: "Kathleen Clough"
+date: "10/2/2020"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Task 1
+```{r}
+getwd()
+```
+
+# Task 2
+```{r}
+layout(matrix(1:4, nr=2, nc=2))
+layout.show(4)
+```
+
+```{r}
+layout(matrix(1:4, nr=2, nc=2))
+curve(dnorm(x,mean=10, sd=4),xlim=c(10-3*4, 10+3*4))
+curve(dnorm(x,mean=10, sd=2),xlim=c(10-3*2, 10+3*2))
+curve(dnorm(x,mean=5, sd=10),xlim=c(5-3*10, 5+3*10))
+curve(dnorm(x,mean=5, sd=0.5),xlim=c(5-3*0.5, 5+3*0.5))
+```
+```{r}
+curve(dnorm(x, mean=0, sd=1), xlim=c(-3,3))
+xcurve1=seq(2,5,length=1000)
+ycurve1=dnorm(xcurve1,mean=0,sd=1)
+polygon(c(2,xcurve1,5),c(0,ycurve1,0),col="Pink")
+area=pnorm(5, mean=0, sd=1)-pnorm(2, mean=0, sd=1)
+area=round(area,4)
+text(x=2.15, y=0.025,paste("Area=", area, sep="") )
+```
+```{r}
+curve(dnorm(x, mean=4, sd=2), xlim=c(-2,10))
+xcurve1=seq(1,5,length=1000)
+ycurve1=dnorm(xcurve1,mean=4,sd=2)
+polygon(c(1,xcurve1,5),c(0,ycurve1,0),col="Blue")
+area=pnorm(5, mean=4, sd=2)-pnorm(1, mean=4, sd=2)
+area=round(area,4)
+text(x=3.26393, y=0.094131,paste("Area=", area, sep="") )
+```
+
+```{r}
+curve(dnorm(x, mean=10, sd=4), xlim=c(-2,20))
+xcurve1=seq(-2,10,length=1000)
+ycurve1=dnorm(xcurve1,mean=10,sd=4)
+polygon(c(-2,xcurve1,10),c(0,ycurve1,0),col="Red")
+area=pnorm(10, mean=10, sd=4)-pnorm(0, mean=10, sd=4)
+area=round(area,4)
+text(x=3.26393, y=0.02,paste("Area=", area, sep="") )
+```
+```{r}
+curve(dnorm(x, mean=-2, sd=0.5), xlim=c(-4,4))
+xcurve1=seq(-3,-2,length=1000)
+ycurve1=dnorm(xcurve1,mean=-2,sd=0.5)
+polygon(c(-3,xcurve1,-2),c(0,ycurve1,0),col="pink")
+area=pnorm(-2, mean=-2, sd=0.5)-pnorm(-3, mean=-2, sd=0.5)
+area=round(area,4)
+text(x=-2.5, y=0.2,paste("Area=", area, sep="") )
+```
+#Task 3
+
+# Task 3
+
+```{r}
+layout(matrix(1:4, nr=2, nc=2))
+curve(dgamma(x,shape=1,scale=1),xlim=c(0,10),ylim=c(0,1),col="Red",lwd=2,
+ylab="Gamma density", main="Beta=1")
+#text(locator(1),paste("alpha=",1))
+curve(dgamma(x,shape=3,scale=1),xlim=c(0,10),ylim=c(0,1),add=TRUE,lwd=2)
+#text(locator(1),paste("alpha=",3))
+curve(dgamma(x,shape=5,scale=1),xlim=c(0,10),ylim=c(0,1),add=TRUE, col="Blue",lwd=2)
+#text(locator(1),paste("alpha=",5))
+```
+
+
+
+
+
+
+
+
+
+# Task 4
+
+```{r}
+layout(matrix(1:4, nr=2, nc=2))
+curve(dchisq(x, df=1), xlim=c(0,10), ylim=c(0,1.5), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Green",
+      main="Degrees of Freedom:1")
+
+curve(dchisq(x, df=2), xlim=c(0,15), ylim=c(0,0.75), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Plum1",
+      main="Degrees of Freedom:2")
+
+curve(dchisq(x, df=4), xlim=c(0,10), ylim=c(0,0.5), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Black",
+      main="Degrees of Freedom:4")
+
+curve(dchisq(x, df=20), xlim=c(0,50), ylim=c(0,0.075), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Violet",
+      main="Degrees of Freedom:20")
+```
+
+```{r}
+curve(dchisq(x, df=2), xlim=c(-1,8), ylim=c(0,1.0), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Slate Gray",
+      main="Degrees of Freedom: 2")
+
+xchi2=seq(2,4,length=1000)
+ychi2=dchisq(xchi2, df=2)
+polygon(c(2, xchi2, 4), c(0, ychi2, 0),col="blue")
+cprob2=round(pchisq(4, df=2)-pchisq(2, df=2),3)
+text(x=5, y=0.15, paste("Area=",cprob2,sep=""))
+```
+
+```{r}
+curve(dchisq(x, df=3), xlim=c(0,10), ylim=c(0,0.3), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Slate Gray",
+      main="Degrees of Freedom: 3")
+
+xchi2=seq(3,5,length=1000)
+ychi2=dchisq(xchi2, df=3)
+polygon(c(3, xchi2, 5), c(0, ychi2, 0),col="Cyan3")
+cprob2=round(pchisq(5, df=3)-pchisq(3, df=3),4)
+text(x=5, y=0.15, paste("Area=",cprob2,sep=""))
+```
+```{r}
+curve(dchisq(x, df=20), xlim=c(8,30), ylim=c(0,0.3), lwd=2,
+      xlab="Y", ylab="Chi-Square Density", col="Slate Gray",
+      main="Degrees of Freedom: 20")
+
+xchi2=seq(10,21,length=1000)
+ychi2=dchisq(xchi2, df=20)
+polygon(c(10, xchi2, 21), c(0, ychi2, 0),col="Cyan3")
+cprob2=round(pchisq(21, df=20)-pchisq(10, df=20, lower.tail=FALSE),16)
+text(x=14, y=0.15, paste("Area=",cprob2,sep=""))
+```
+#Task 5
+
+# Task 5
+
+```{r}
+layout(matrix(1:4, nr=2, nc=2))
+curve(dweibull(x,shape=3,scale=2), xlim=c(0,5), ylim=c(0,0.75),
+        col="Black", lwd=2, ylab="Weibull Density", xlab="Y",
+        main="Shape = 3, Scale = 2")
+xwb1=seq(2,5, length=1000)
+ywb1=dweibull(xwb1, shape=3, scale=2)
+polygon(c(2, xwb1,5),c(0,ywb1,0), col="Red")
+                                                    
+```
+
+# Task 6 
+
+```{r}
+#Beta1
+curve(dbeta(x,shape1=3,shape2=2),xlim=c(0,1), col="Dark Grey", lwd=2,
+      ylab="Beta Density", xlab = "Y", main="Shape1=3, Shape2=2")
+```
+
+```{r}
+#Beta3
+curve(dbeta(x,shape1=2,shape2=10),xlim=c(0,1), col="Black", lwd=2,
+      ylab="Beta Density", xlab = "Y", main="Shape1=2, Shape2=10")
+xcurve=seq(0,0.5,length=1000)
+ycurve=dbeta(xcurve,shape1=2,shape2=10)
+polygon(c(0,xcurve,0.5),c(0,ycurve1,0),col="Cornsilk")
+
+prob=pbeta(0.5, shape1=2, shape2=10)-pbeta(0, shape1=2, shape2=10)
+prob=round(prob,4)
+text(x=0.15, y=1.5, paste("Area3=",prob,sep=""))
+```
+
+
+# Task 7
+```{r}
+myncurve = function(mu, sigma){
+  curve(dnorm(x,mean=mu,sd=sigma), xlim = c(mu-3*sigma, mu + 3*sigma))
+  
+}
+myncurve(mu=10, sigma=5)
+```
+
